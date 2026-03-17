@@ -12,7 +12,8 @@
   },
   "skpm": {
     "name": "Pencil Sketch",
-    "main": "pencil-sketch.sketchplugin"
+    "main": "pencil-sketch.sketchplugin",
+    "manifest": "manifest.json"
   },
   "devDependencies": {
     "@skpm/builder": "^0.9.5",

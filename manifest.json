@@ -1,0 +1,30 @@
+{
+  "name": "Pencil Sketch",
+  "identifier": "dev.pencil.sketch-converter",
+  "version": "1.0.0",
+  "description": "Import .pen files into Sketch and export Sketch selections to .pen format",
+  "author": "Kyle Kochanek",
+  "compatibleVersion": "70",
+  "bundleVersion": 1,
+  "disableCocoaScriptPreprocessor": true,
+  "commands": [
+    {
+      "name": "Import .pen file…",
+      "identifier": "import-pen",
+      "script": "./commands/import-pen.js",
+      "handler": "default",
+      "shortcut": "ctrl shift i"
+    },
+    {
+      "name": "Copy as .pen",
+      "identifier": "copy-as-pen",
+      "script": "./commands/copy-as-pen.js",
+      "handler": "default",
+      "shortcut": "ctrl shift c"
+    }
+  ],
+  "menu": {
+    "title": "Pencil",
+    "items": ["import-pen", "copy-as-pen"]
+  }
+}
