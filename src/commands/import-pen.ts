@@ -15,7 +15,9 @@ export default function importPen(context: any): void {
   if (response !== NSModalResponseOK) return
 
   // 2. Read the file as a UTF-8 string
-  const filePath: string = panel.URL().path()
+  const url = panel.URL()
+  if (!url) return
+  const filePath: string = url.path()
   const raw = NSString.stringWithContentsOfFile_encoding_error(
     filePath,
     NSUTF8StringEncoding,
