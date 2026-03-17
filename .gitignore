@@ -1,3 +1,29 @@
+# Dependencies
 node_modules/
+
+# Build output
 dist/
+build/
+
+# Sketch plugin bundle
 *.sketchplugin
+
+# Environment / secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.p12
+*.pfx
+*.cert
+*.crt
+secrets.json
+credentials.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
