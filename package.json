@@ -1,0 +1,25 @@
+{
+  "name": "pencil-sketch",
+  "version": "1.0.0",
+  "description": "Bidirectional Sketch ↔ Pencil (.pen) converter",
+  "main": "pencil-sketch.sketchplugin",
+  "scripts": {
+    "build": "skpm-build",
+    "watch": "skpm-build --watch",
+    "start": "skpm-build --watch --run",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "skpm": {
+    "name": "Pencil Sketch",
+    "main": "pencil-sketch.sketchplugin"
+  },
+  "devDependencies": {
+    "@skpm/builder": "^0.9.5",
+    "@types/jest": "^29.0.0",
+    "@types/node": "^20.0.0",
+    "jest": "^29.0.0",
+    "ts-jest": "^29.0.0",
+    "typescript": "^5.0.0"
+  }
+}
