@@ -1,8 +1,7 @@
 import { hexToSketchColor, sketchColorToHex } from './color'
 import { sketchGradientToPen, penGradientToSketch } from './gradient'
+import type { Frame } from './gradient'
 import type { PenFill, PenStroke, PenEffect, PenSolidFill } from '../types/pen'
-
-interface Frame { width: number; height: number }
 
 export function sketchFillsToPen(
   fills: any[],
@@ -93,6 +92,30 @@ export function sketchShadowsToPen(shadows: any[], blurs: any[]): PenEffect[] {
   })
 
   return effects
+}
+
+/** Applies fills, stroke, effects, and opacity from a Sketch layer onto a .pen node in-place. */
+export function applySketchStyle(node: any, layer: any): void {
+  const { frame, style } = layer
+  const fill = sketchFillsToPen(style.fills ?? [], { width: frame.width, height: frame.height })
+  if (fill) node.fill = fill
+  const stroke = sketchBordersToPen(style.borders ?? [])
+  if (stroke) node.stroke = stroke
+  const effects = sketchShadowsToPen(style.shadows ?? [], style.blurs ?? [])
+  if (effects.length) node.effect = effects
+  if (style.opacity != null && style.opacity !== 1) node.opacity = style.opacity
+}
+
+/** Builds the Sketch style object for a shape node from a .pen node's style properties. */
+export function buildShapeStyle(node: any, w: number, h: number): object {
+  const { shadows, blurs } = penEffectsToSketch(node.effect)
+  return {
+    fills: penFillsToSketch(node.fill, { width: w, height: h }),
+    borders: penStrokeToSketch(node.stroke),
+    shadows,
+    blur: blurs[0],
+    opacity: node.opacity ?? 1,
+  }
 }
 
 export function penEffectsToSketch(effects: PenEffect[] | undefined): { shadows: any[]; blurs: any[] } {

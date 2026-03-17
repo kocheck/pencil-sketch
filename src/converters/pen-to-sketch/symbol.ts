@@ -1,8 +1,7 @@
 import type { PenFrameNode, PenNode } from '../../types/pen'
+import type { DispatchFn } from './frame'
 
-type Dispatch = (node: PenNode, parent: any, symbolMap: Map<string, any>) => any
-
-export function convertPenReusable(node: PenFrameNode, parent: any, symbolMap: Map<string, any>, dispatch: Dispatch): any {
+export function convertPenReusable(node: PenFrameNode, parent: any, symbolMap: Map<string, any>, dispatch: DispatchFn): any {
   const { SymbolMaster } = require('sketch/dom')
 
   const master = new SymbolMaster({

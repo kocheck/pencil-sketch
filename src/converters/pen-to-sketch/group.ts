@@ -1,8 +1,7 @@
 import type { PenGroupNode, PenNode } from '../../types/pen'
+import type { DispatchFn } from './frame'
 
-type Dispatch = (node: PenNode, parent: any, symbolMap: Map<string, any>) => any
-
-export function convertPenGroup(node: PenGroupNode, parent: any, symbolMap: Map<string, any>, dispatch: Dispatch): any {
+export function convertPenGroup(node: PenGroupNode, parent: any, symbolMap: Map<string, any>, dispatch: DispatchFn): any {
   const { Group } = require('sketch/dom')
 
   const group = new Group({

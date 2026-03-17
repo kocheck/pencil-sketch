@@ -13,7 +13,7 @@ export interface SketchGradientStop {
   position: number
 }
 
-interface Frame { width: number; height: number }
+export interface Frame { width: number; height: number }
 
 export function sketchGradientToPen(grad: SketchGradient, frame: Frame): PenFill {
   const stops: PenGradientStop[] = grad.stops.map(s => ({
