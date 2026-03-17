@@ -1,5 +1,5 @@
 import { sketchGradientToPen, penGradientToSketch } from '../../src/utils/gradient'
-import type { PenLinearGradientFill } from '../../src/types/pen'
+import type { PenLinearGradientFill, PenRadialGradientFill } from '../../src/types/pen'
 
 const frame = { width: 100, height: 100 }
 
@@ -21,6 +21,21 @@ describe('sketchGradientToPen', () => {
     expect(result.stops[0].position).toBe(0)
     expect(result.angle).toBeCloseTo(0, 1)
   })
+
+  it('converts a radial gradient', () => {
+    const sketchGrad = {
+      gradientType: 1,
+      stops: [
+        { color: { red: 1, green: 1, blue: 1, alpha: 1 }, position: 0 },
+        { color: { red: 0, green: 0, blue: 0, alpha: 1 }, position: 1 },
+      ],
+      from: { x: 0.5, y: 0.5 },
+      to: { x: 1, y: 0.5 },
+    }
+    const result = sketchGradientToPen(sketchGrad, frame) as PenRadialGradientFill
+    expect(result.type).toBe('radial')
+    expect(result.stops).toHaveLength(2)
+  })
 })
 
 describe('penGradientToSketch', () => {
@@ -38,5 +53,20 @@ describe('penGradientToSketch', () => {
     expect(result.stops).toHaveLength(2)
     expect(result.from).toBeDefined()
     expect(result.to).toBeDefined()
+  })
+
+  it('converts a radial gradient to Sketch format', () => {
+    const penGrad: PenRadialGradientFill = {
+      type: 'radial',
+      stops: [
+        { color: '#ffffff', position: 0 },
+        { color: '#000000', position: 1 },
+      ],
+      cx: 50,
+      cy: 50,
+    }
+    const result = penGradientToSketch(penGrad, frame)
+    expect(result.gradientType).toBe(1)
+    expect(result.stops).toHaveLength(2)
   })
 })
