@@ -1,0 +1,19 @@
+{
+  "children": [
+    {
+      "type": "frame",
+      "name": "Card",
+      "x": 0,
+      "y": 0,
+      "width": 320,
+      "height": 200,
+      "fill": { "type": "solid", "color": "#FFFFFF" },
+      "effect": [{ "type": "shadow", "color": "#00000033", "x": 0, "y": 4, "blur": 12 }],
+      "children": [
+        { "type": "rectangle", "name": "Image", "x": 0, "y": 0, "width": 320, "height": 120, "fill": { "type": "solid", "color": "#E5E7EB" } },
+        { "type": "text", "name": "Title", "x": 16, "y": 132, "width": 288, "height": 24, "content": "Card Title", "fontSize": 18, "fontWeight": 700 },
+        { "type": "text", "name": "Subtitle", "x": 16, "y": 162, "width": 288, "height": 20, "content": "Subtitle text", "fontSize": 14 }
+      ]
+    }
+  ]
+}

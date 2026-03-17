@@ -1,0 +1,27 @@
+{
+  "children": [
+    {
+      "type": "frame",
+      "id": "primary-button",
+      "name": "Primary Button",
+      "x": 0,
+      "y": 0,
+      "width": 120,
+      "height": 40,
+      "reusable": true,
+      "fill": { "type": "solid", "color": "#3B82F6" },
+      "children": [
+        { "type": "text", "name": "Label", "x": 0, "y": 0, "width": 120, "height": 40, "content": "Button", "fontSize": 14, "fontWeight": 600, "fill": { "type": "solid", "color": "#FFFFFF" } }
+      ]
+    },
+    {
+      "type": "ref",
+      "name": "Button Instance",
+      "ref": "primary-button",
+      "x": 200,
+      "y": 100,
+      "width": 120,
+      "height": 40
+    }
+  ]
+}
