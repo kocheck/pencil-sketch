@@ -13,6 +13,7 @@ export function convertSketchPath(layer: any): PenPathNode {
   if (stroke) node.stroke = stroke
   const effects = sketchShadowsToPen(style.shadows ?? [], style.blurs ?? [])
   if (effects.length) node.effect = effects
+  if (style.opacity != null && style.opacity !== 1) node.opacity = style.opacity
 
   return node
 }

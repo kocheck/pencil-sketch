@@ -19,7 +19,7 @@ export function convertSketchText(layer: any): PenTextNode {
     fontFamily: style.fontFamily,
     fontSize: style.fontSize,
     fontWeight: style.fontWeight,
-    letterSpacing: style.letterSpacing || undefined,
+    letterSpacing: style.letterSpacing != null ? style.letterSpacing : undefined,
     textAlign: ALIGN_MAP[style.alignment] ?? 'left',
   }
 
